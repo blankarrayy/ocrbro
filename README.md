@@ -22,6 +22,23 @@ Extract text from images and PDFs in your n8n workflows. This community node pro
 5. Click **Install**
 6. Restart n8n when prompted
 
+## Video Tutorials
+
+### 1. How to install ocrbro n8n node for free?
+[![How to install ocrbro n8n node for free?](https://img.youtube.com/vi/v-SByxejyQ8/0.jpg)](https://youtu.be/v-SByxejyQ8)
+
+### 2. Example PDF Text Extraction
+[![Example PDF Text Extraction](https://img.youtube.com/vi/JpXKcSkO61o/0.jpg)](https://youtu.be/JpXKcSkO61o)
+
+### 3. Example Image Text extraction OCR
+[![Example Image Text extraction OCR](https://img.youtube.com/vi/sZb9GHWbtbo/0.jpg)](https://youtu.be/sZb9GHWbtbo)
+
+### 4. How to create Private n8n PDF text extraction API endpoint on n8n
+[![How to create Private n8n PDF text extraction API endpoint on n8n](https://img.youtube.com/vi/sZb9GHWbtbo/0.jpg)](https://youtu.be/sZb9GHWbtbo)
+
+### 5. How to create Private n8n Image text extraction API endpoint on n8n
+[![How to create Private n8n Image text extraction API endpoint on n8n](https://img.youtube.com/vi/crR1N8z0IHw/0.jpg)](https://youtu.be/crR1N8z0IHw)
+
 ### Via npm (Self-hosted)
 
 ```bash
@@ -112,6 +129,8 @@ Extract text content from PDF documents.
 1. **HTTP Request** - Download PDF from URL
 2. **OCR Bro** - Extract text (operation: `Extract Text from PDF`)
 3. **Send Email** - Include extracted text in email body
+
+
 
 ## Troubleshooting
 
