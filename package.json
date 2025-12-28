@@ -1,0 +1,49 @@
+{
+  "name": "n8n-nodes-ocrbro",
+  "version": "0.1.1",
+  "description": "Native n8n node for OCR using Tesseract.js",
+  "keywords": [
+    "n8n-community-node-package"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "author": {
+    "name": "User",
+    "email": "user@example.com"
+  },
+  "community": {
+    "author": {
+      "name": "User",
+      "email": "user@example.com"
+    }
+  },
+  "main": "dist/index.js",
+  "n8n": {
+    "nodes": [
+      "dist/nodes/OcrBro/OcrBro.node.js"
+    ]
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "ts-node test/test.ts"
+  },
+  "files": [
+    "dist",
+    "eng.traineddata"
+  ],
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "n8n-workflow": "*",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "pdf2json": "^4.0.0",
+    "tesseract.js": "^4.0.0",
+    "unpdf": "^1.4.0"
+  }
+}
