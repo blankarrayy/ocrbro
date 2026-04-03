@@ -59,6 +59,34 @@ export class OcrBro implements INodeType {
                     },
                 },
             },
+            {
+                displayName: 'Password Protected?',
+                name: 'isPasswordProtected',
+                type: 'boolean',
+                default: false,
+                description: 'Whether the PDF file is encrypted/password protected',
+                displayOptions: {
+                    show: {
+                        operation: ['extractPdf'],
+                    },
+                },
+            },
+            {
+                displayName: 'Password',
+                name: 'password',
+                type: 'string',
+                typeOptions: {
+                    password: true,
+                },
+                default: '',
+                description: 'The password required to unlock the PDF document',
+                displayOptions: {
+                    show: {
+                        operation: ['extractPdf'],
+                        isPasswordProtected: [true],
+                    },
+                },
+            },
         ],
     };
 
@@ -137,7 +165,20 @@ export class OcrBro implements INodeType {
                         throw new Error(`Expected PDF file but got: ${mimeType}. Use "OCR from Image" for image files.`);
                     }
 
-                    const pdf = await getDocumentProxy(new Uint8Array(binaryData));
+                    let pdfBufferToProcess: any = new Uint8Array(binaryData);
+                    
+                    const isPasswordProtected = this.getNodeParameter('isPasswordProtected', i, false) as boolean;
+                    if (isPasswordProtected) {
+                        const password = this.getNodeParameter('password', i) as string;
+                        const { PDFDocument } = await import('@yongseok_choi/pdf-lib');
+                        const pdfDoc = await PDFDocument.load(binaryData, {
+                            password: password,
+                            ignoreEncryption: true,
+                        });
+                        pdfBufferToProcess = (await pdfDoc.save()) as unknown as Uint8Array;
+                    }
+
+                    const pdf = await getDocumentProxy(pdfBufferToProcess);
                     const { text, totalPages } = await extractText(pdf, { mergePages: true });
 
                     returnData.push({
